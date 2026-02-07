@@ -1,3 +1,3 @@
 #Harpaleons spot
 
-Hi! Welcome to my spot! (Click Here)[https://harpaleon.github.io/harpaleon/]
+Hi! Welcome to my spot! [Click Here](https://harpaleon.github.io/harpaleon/)
