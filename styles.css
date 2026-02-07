@@ -1,5 +1,6 @@
-<!DOCTYPE css>
-.flex-container {
-  display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center;     /* Centers vertically */}
+.tabs{
+text-align: center;
+}
+.title{
+text-align: center;
+}
