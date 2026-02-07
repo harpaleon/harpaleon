@@ -1,3 +1,3 @@
-# Harpaleons spot
+# website in progress
 
-Hi! Welcome to my spot! [Click Here](https://harpaleon.github.io/harpaleon/)
+[Here](https://harpaleon.github.io/harpaleon/)
