@@ -1,18 +1,17 @@
 {
-  "artworks": [
-    
+  "artworktags": [
+    {
+      "name": "walkingonthelake",
+      "alt": "Pastel drawing of a girl in purple walking on water.",
+      "tags": ["2024", "oil-pastel"], 
+      "type": "jpg"
+    },
+
   {
-    "name": "walkingonthelake",
-    "caption": "",
-    "tags": ["2024, oil-pastel"],
+    "name": "sendsusanourlove",
+    "alt": "A cropped oil painting of an apple.",
+    "tags": ["2024", "oils"],
     "type": "jpg"
-  },
-  {
-    "name": "driftwood",
-    "caption": "",
-    "tags": ["2026, oil-pastel"],
-    "type": "png"
   }
   ]
 }
-
