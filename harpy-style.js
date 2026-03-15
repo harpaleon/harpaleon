@@ -33,6 +33,10 @@ body {
     text-indent: 2em;
 }
 
+em.asterisk {
+    font-style: normal;
+    font-weight: bold;
+}
 /******************************************************************/
 
 .md h2 {
