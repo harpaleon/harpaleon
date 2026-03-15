@@ -23,7 +23,7 @@ document.write(`
 
 body {
     background: rgba(175, 225, 237, 0.15);
-    color: #003549;
+    color: rgb(0, 38, 74);
     font-family: georgia;
     text-shadow: 0px 1px 3px rgb(0,0,0,0.3);
     line-height: 150%;
@@ -40,7 +40,7 @@ em.asterisk {
 /******************************************************************/
 
 .md h2 {
-    color: rgb(8, 53, 90);
+    color: rgb(0, 13, 25);
     text-transform: lowercase;
     text-align: center;
 }
