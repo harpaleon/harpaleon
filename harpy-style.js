@@ -26,6 +26,7 @@ body {
     color: #000;
     font-family: georgia;
     text-shadow: 0px 1px 3px rgb(0,0,0,0.3);
+    line-height: 150%;
 }
 
 .md p {
