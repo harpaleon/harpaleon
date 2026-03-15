@@ -28,6 +28,12 @@ body {
     text-shadow: 0px 1px 3px rgb(0,0,0,0.3);
 }
 
+.md p {
+    text-indent: 2em;
+}
+
+/******************************************************************/
+
 .md h2 {
     text-transform: lowercase;
     text-align: center;
