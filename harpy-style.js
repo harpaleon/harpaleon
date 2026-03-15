@@ -14,7 +14,7 @@ document.write(`
 <link rel="icon" type="image/x-icon" href="logo32.ico"/>
 <!-- Markdeep: --><script src="https://www.casual-effects.com/markdeep/markdeep.min.js"></script>
 <title>Harpaleon</title>
-<nav class="header"><div class="nav-content"><div class="xtitle"><a href="index.html">harpy</a></div>  |  <a href="art.html">ART</a>  |  <a href="archive.html">HARCHIVE</a></div></nav>
+<nav class="header"><div class="nav-content"><div class="xtitle"><a href="index.html">harpy</a></div>   <a href="art.html">ART</a>   <a href="archive.html">ARCHIVE</a></div></nav>
 `);
 
 {
