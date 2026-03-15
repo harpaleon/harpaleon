@@ -22,8 +22,8 @@ document.write(`
     style.innerHTML = `
 
 body {
-    background: rgba(97, 183, 170, 0.15);
-    color: #000;
+    background: rgba(175, 225, 237, 0.15);
+    color: #003549;
     font-family: georgia;
     text-shadow: 0px 1px 3px rgb(0,0,0,0.3);
     line-height: 150%;
@@ -40,6 +40,7 @@ em.asterisk {
 /******************************************************************/
 
 .md h2 {
+    color: rgb(8, 53, 90);
     text-transform: lowercase;
     text-align: center;
 }
@@ -128,12 +129,13 @@ nav.footer {
     user-select: none;
     padding-top: 4px;
     text-align: center;
-    background: rgba(0,0,0,.25);
+    background: rgba(1, 63, 116, 0.25);
     white-space: pre;
     border-top: 2px black solid;
     padding-bottom: 4px;
     font-size: 12px;
-    position: absolute;
+    position: fixed;
+    backdrop-filter: blur(8px);
     bottom: 0px;
     left: 0;
     right: 0;
