@@ -1,6 +1,7 @@
 markdeepOptions = {
     tocStyle: 'none',
     h1TitleInput: true,
+    h1TitleOutput: true,
     onLoad: function() {
         var footer = document.createElement('nav');
         footer.className = 'footer';
@@ -17,11 +18,13 @@ document.write(`
 `);
 
 {
-document.createElement("style").innerHTML = `
+    const style = document.createElement("style");
+    style.innerHTML = `
 
 body {
     background: rgba(97, 183, 170, 0.15);
     color: #000;
+    font-family: georgia;
     text-shadow: 0px 1px 3px rgb(0,0,0,0.3);
 }
 
@@ -133,4 +136,5 @@ nav.footer a:hover {
     text-decoration: underline !important;
 }
 `;
+    document.head.appendChild(style);
 }
