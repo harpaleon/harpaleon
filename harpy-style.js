@@ -5,7 +5,7 @@ markdeepOptions = {
     onLoad: function() {
         var footer = document.createElement('nav');
         footer.className = 'footer';
-        footer.innerHTML = '<a href="https://github.com/harpaleon">GitHub</a>      \u00a9 2026 HARPALEON';
+        footer.innerHTML = '    \u00a9 2026 HARPALEON';
         document.body.appendChild(footer);
     }
 };
@@ -14,16 +14,22 @@ document.write(`
 <link rel="icon" type="image/x-icon" href="logo32.ico"/>
 <!-- Markdeep: --><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
 <title>Harpaleon</title>
-<nav class="header"><div class="nav-content"><div class="xtitle"><a href="index.html">harpy</a></div>   <a href="art.html">ART</a>   <a href="archive.html">ARCHIVE</a></div></nav>
+<nav class="header"><div class="nav-content"><div class="xtitle"><a href="index.html">harpy</a></div>   <a href="art.html">ART</a>   <a href="stories.html">STORIES</a>   <a href="archive.html">ARCHIVE</a></div></nav>
 `);
 
 {
     const style = document.createElement("style");
     style.innerHTML = `
 
+.micro-5-regular {
+  font-family: "Micro 5", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+  
 body {
-    background: rgba(175, 225, 237, 0.15);
-    color: rgb(0, 38, 74);
+    background: rgba(208, 246, 103, 0.15);
+    color: rgb(70, 38, 0);
     font-family: georgia;
     text-shadow: 0px 1px 3px rgb(0,0,0,0.3);
     line-height: 150%;
@@ -36,14 +42,19 @@ body {
 em.asterisk {
     font-style: normal;
     font-weight: bold;
+
+
 }
 /******************************************************************/
 
 .md h2 {
-    color: rgb(0, 13, 25);
+    color: rgb(164, 205, 0);
     text-transform: lowercase;
+    font-family: "Micro 5";
+    font-size: 50px;
     text-align: center;
 }
+
 
 .md h2::before { display: none; }
 
@@ -65,11 +76,13 @@ big {
 .xtitle {
     user-select: none;
     font-weight: bold;
+    font-family: "Micro 5";
     font-size: 20px;
     padding-bottom: 3px;
     padding-right: 8px;
     display: inline-block;
     text-decoration: none !important;
+    color:rgb(164, 205, 0);
 }
 
 .md div.xtitle a {
@@ -101,6 +114,7 @@ nav.header {
 
 .nav-content {
     padding: 0 30px;
+    font-family: "Micro 5";
     display: flex;
     align-items: center;
     max-width: 1024px;
@@ -129,7 +143,7 @@ nav.footer {
     user-select: none;
     padding-top: 4px;
     text-align: center;
-    background: rgba(1, 63, 116, 0.25);
+    background: rgba(255, 232, 157, 0.61);
     white-space: pre;
     border-top: 2px black solid;
     padding-bottom: 4px;
@@ -148,6 +162,23 @@ nav.footer a {
 nav.footer a:hover {
     text-decoration: underline !important;
 }
+
+#leftsidebar {
+   position: absolute;
+   left: 90;
+   border: 10px solid;
+   border-radius: 10px;
+   padding: 1rem 1.5rem;
+   color: rgb(242, 133, 0);
+   background:rgba(255, 232, 157, 0.61);
+}
+
+#placeholderimage {
+ position: absolute;
+ margin-top: -250;
+   left: 40;
+}
+
 `;
     document.head.appendChild(style);
 }
