@@ -87,6 +87,7 @@ big {
 
 .md div.xtitle a {
     text-decoration: none !important;
+    color: rgb(245, 134, 0);
 }
 
 .md div.xtitle:hover {
@@ -143,7 +144,7 @@ nav.footer {
     user-select: none;
     padding-top: 4px;
     text-align: center;
-    background: rgba(255, 232, 157, 0.61);
+    background: rgba(194, 212, 255, 0.61);
     white-space: pre;
     border-top: 2px black solid;
     padding-bottom: 4px;
@@ -166,17 +167,27 @@ nav.footer a:hover {
 #leftsidebar {
    position: absolute;
    left: 90;
-   border: 10px solid;
+   border: 2px solid;
    border-radius: 10px;
    padding: 1rem 1.5rem;
-   color: rgb(242, 133, 0);
-   background:rgba(255, 232, 157, 0.61);
+   color: rgb(70, 38, 0);
+   background:rgba(194, 212, 255, 0.61);
 }
 
 #placeholderimage {
- position: absolute;
- margin-top: -250;
-   left: 40;
+margin-top: -250;
+left: -350;
+position: relative;
+z-index: -1;
+}
+
+
+#navigation {
+    color: rgb(70, 38, 0);
+    text-transform: lowercase;
+    font-family: "Micro 5";
+    font-size: 50px;
+    text-align: center;
 }
 
 `;
