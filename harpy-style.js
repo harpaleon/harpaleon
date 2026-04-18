@@ -28,11 +28,15 @@ document.write(`
 }
   
 body {
-    background: rgba(208, 246, 103, 0.15);
-    color: rgb(70, 38, 0);
+    background: rgba(222, 255, 131, 0.15);
+    color: rgb(102, 56, 0);
     font-family: georgia;
     text-shadow: 0px 1px 3px rgb(0,0,0,0.3);
     line-height: 150%;
+}
+
+#background {
+    background: rgba(240, 255, 200, 0.15);
 }
 
 .md p {
@@ -43,8 +47,8 @@ em.asterisk {
     font-style: normal;
     font-weight: bold;
 
-
 }
+
 /******************************************************************/
 
 .md h2 {
@@ -54,6 +58,18 @@ em.asterisk {
     font-size: 50px;
     text-align: center;
 }
+
+.md .worktitles {
+    color: rgb(102, 56, 0);
+    text-align: center;
+    font-family: "Micro 5";
+    font-size: 50px;
+}
+
+.md a:visited {
+    color:rgb(164, 205, 0);
+}
+
 
 
 .md h2::before { display: none; }
@@ -170,7 +186,7 @@ nav.footer a:hover {
    border: 2px solid;
    border-radius: 10px;
    padding: 1rem 1.5rem;
-   color: rgb(70, 38, 0);
+   color: rgb(102, 56, 0);
    background:rgba(194, 212, 255, 0.61);
 }
 
@@ -181,14 +197,14 @@ position: relative;
 z-index: -1;
 }
 
-
 #navigation {
-    color: rgb(70, 38, 0);
+    color: rgb(102, 56, 0);
     text-transform: lowercase;
     font-family: "Micro 5";
     font-size: 50px;
     text-align: center;
 }
+
 
 `;
     document.head.appendChild(style);
