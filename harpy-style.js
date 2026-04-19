@@ -10,6 +10,7 @@ markdeepOptions = {
     }
 };
 
+
 document.write(`
 <link rel="icon" type="image/x-icon" href="logo32.ico"/>
 <!-- Markdeep: --><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
@@ -26,9 +27,9 @@ document.write(`
   font-weight: 400;
   font-style: normal;
 }
-  
+
 body {
-    background: rgba(222, 255, 131, 0.15);
+    background: rgba(235, 255, 182, 0.15);
     color: rgb(102, 56, 0);
     font-family: georgia;
     text-shadow: 0px 1px 3px rgb(0,0,0,0.3);
@@ -197,6 +198,20 @@ position: relative;
 z-index: -1;
 }
 
+#mailbox {
+margin-top: -810;
+left: 180;
+position: relative;
+}
+
+/* #mailbox:hover {
+margin-top: -810;
+left: 180;
+position: relative;
+transform: scale(2,2);
+}
+*/
+
 #navigation {
     color: rgb(102, 56, 0);
     text-transform: lowercase;
@@ -205,7 +220,99 @@ z-index: -1;
     text-align: center;
 }
 
+/* Button filters etc */
+
+
+.archivefiltercontainers {
+  overflow: hidden;
+}
+
+.filterDiv {
+  float: left;
+  width: 150px;
+  text-align: center;
+  font-size: 11px;
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+
+.show {
+  display: block;
+}
+
+.btn {
+border: none;
+outline: none;
+padding: 12px 16px;
+background:rgba(194, 212, 255, 0.61);
+cursor: pointer;
+font-family: "Micro 5";
+font-size: 20px;
+
+}
+
+.btn:hover {
+   background:rgba(218, 229, 255, 0.61);
+}
+
+.btn.active {
+background: rgb(245, 134, 0);
+color: white;
+font-family: georgia;
+
+}
 
 `;
     document.head.appendChild(style);
+}
+
+
+
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+// Show filtered elements
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementById("filterbuttons");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
 }
