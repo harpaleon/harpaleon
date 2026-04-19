@@ -50,6 +50,8 @@ em.asterisk {
 
 }
 
+
+
 /******************************************************************/
 
 .md h2 {
@@ -70,8 +72,6 @@ em.asterisk {
 .md a:visited {
     color:rgb(164, 205, 0);
 }
-
-
 
 .md h2::before { display: none; }
 
@@ -218,6 +218,7 @@ transform: scale(2,2);
     font-family: "Micro 5";
     font-size: 50px;
     text-align: center;
+    margin-top: 15;
 }
 
 /* Button filters etc */
@@ -225,6 +226,7 @@ transform: scale(2,2);
 
 .archivefiltercontainers {
   overflow: hidden;
+  text-align: center;
 }
 
 .filterDiv {
@@ -263,7 +265,27 @@ font-family: georgia;
 
 }
 
+#filterbuttons {
+text-align: center;}
+
+#archiveleft {
+   position: absolute;
+   left: 20;
+   z-index: -1;
+   width: 25%;
+   weight: 25%;
+   margin-top: 150;
+   border-radius: 30px;
+
+
+}
+
+}
+
 `;
+
+
+
     document.head.appendChild(style);
 }
 
