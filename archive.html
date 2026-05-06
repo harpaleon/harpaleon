@@ -1,38 +1,63 @@
 <meta charset="utf-8"><script src="harpy-style.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
-<br>
-<br>
-<br>
-<br>
 
-<!-- Control buttons -->
+
+
+<script>
+  const all = {
+    2024: [
+      {src:"piranha",     title:"Fish Series",    href:"pastelfish"},
+      {src:"seacollage",  title:"Rockweed One"},
+      {src:"nurseshark",  title:"Nurse Shark"},
+      {src:"thelightinthemirror", title:"The Light in the Mirror"},
+      {src:"sendsusanourlove", title:"Send Susan Our Love"},
+      {src:"tvstudy", title:"Will Graham"},
+      {src:"gull", title:"Gull"},
+      {src:"dermotographicalnightmare", title:"Derm. Nightmare"},
+      {src:"walkingonthelake", title:"Walking on the Lake"},
+      {src:"totallytruthful", title:"Totally Truthful", href:"totallytruthful"},
+    ],
+
+    2025: [
+      {src:"williamstown", title:"Williamstown"},
+    ],
+
+    2026: [
+      {src:"perezcenterforthearts", title:"Perez Center", href:"perezcenterforthearts"},
+      {src:"driftwood", title:"Driftwood", href:"driftwood"},
+      {src:"untitled", title:"Seashell", href:"untitled"},
+
+    ]
+  };
+
+  let button_list = "";
+  let image_list = "";
+  for (const year in all) {
+    button_list += `<button class="btn" onclick="filterSelection('${year}')"> ${year}</button>`;
+    for (const image of all[year]) {
+      const link = image.href ? `archivetext/${image.href}.html` : `art/${image.src}.png`;
+      image_list += `<div class="filterDiv ${year}">[<img src="art/${image.src}tn.png">](${link})_${image.title}_</div>`;
+    }
+  }
+
+  document.write(`
 <div id="filterbuttons">
   <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-  <button class="btn" onclick="filterSelection('2023')"> 2023</button>
-  <button class="btn" onclick="filterSelection('2024')"> 2024</button>
-  <button class="btn" onclick="filterSelection('2025')"> 2025</button>
-  <button class="btn" onclick="filterSelection('2026')"> 2026</button>
-</div>
+  ${button_list}
+</div>`);
 
-<!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
-<div class="archivefiltercontainers">
-  <div class="filterDiv 2024"><a href="archive/pastelfish.html"><img src="art/piranhatn.png"><i>Fish Series</i></a></div>
-  <div class="filterDiv 2024">![Rockweed One](art/seacollagetn.png)</div>
-  <div class="filterDiv 2024">![Nurse Shark](art/nursesharktn.png)</div>
-  <div class="filterDiv 2024">![The Light in the Mirror](art/thelightinthemirrortn.png)</div>
-  <div class="filterDiv 2024">![Send Susan our Love](art/sendsusanourlovetn.png)</div>
-  <div class="filterDiv 2024">![Will Graham](art/tvstudytn.png)</div>
-  <div class="filterDiv 2024">![Gull](art/gulltn.png)</div>
-  <div class="filterDiv 2024">![Dermo. Nightmare](art/dermotographicalnightmaretn.png)</div>
-  <div class="filterDiv 2024">![Walking on the Lake](art/walkingonthelaketn.png)</div>
-  <div class="filterDiv 2024">![Totally Truthful](art/totallytruthfultn.png)</div>
+  document.write(`<div class="archivefiltercontainers">${image_list}</div>`);
+</script>
 
-  <div class="filterDiv 2025">![Williamstown](art/williamstowntn.png)</div>
+<script>
 
-  <div class="filterDiv 2026">  <a href="archive/perezcenterforthearts.html"><img src="art/perezcenterfortheartstn.png"><i>Perez Center</i></a> </div>
-  <div class="filterDiv 2026"> ![Driftwood](art/driftwoodtn.png)</div>
+var btnContainer = document.getElementById("filterbuttons");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
 
-
-</div>
+</script>

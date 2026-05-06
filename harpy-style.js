@@ -10,12 +10,28 @@ markdeepOptions = {
     }
 };
 
+let root = '';
+
+// Find the harpy-style.js script 
+for (const node of document.getElementsByTagName('script')) {
+    if (node.src.endsWith('harpy-style.js')) {
+        root = node.src.replace('harpy-style.js', '');
+        break;
+    }
+}
+
+// Set root relative to location
+
+
 
 document.write(`
 <link rel="icon" type="image/x-icon" href="logo32.ico"/>
 <!-- Markdeep: --><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
 <title>Harpaleon</title>
-<nav class="header"><div class="nav-content"><div class="xtitle"><a href="index.html">harpy</a></div>   <a href="art.html">ART</a>   <a href="stories.html">STORIES</a>   <a href="archive.html">ARCHIVE</a></div></nav>
+<nav class="header"><div class="nav-content"><div class="xtitle"><a href="${root}index.html">harpy</a></div>   <a href="${root}art.html">ART</a>   <a href="${root}stories.html">STORIES</a>   <a href="${root}archive.html">ARCHIVE</a></div></nav>
 `);
 
 {
@@ -199,18 +215,16 @@ z-index: -1;
 }
 
 #mailbox {
-margin-top: -810;
-left: 180;
-position: relative;
+bottom: 128px;
+right: 128px;
+position: fixed;
 }
 
-/* #mailbox:hover {
-margin-top: -810;
-left: 180;
-position: relative;
+#mailbox:hover {
 transform: scale(2,2);
+transform-origin: center;
 }
-*/
+
 
 #navigation {
     color: rgb(102, 56, 0);
@@ -234,6 +248,7 @@ transform: scale(2,2);
   width: 150px;
   text-align: center;
   font-size: 11px;
+  margin: 6px;
   display: none; /* Hidden by default */
 }
 
@@ -268,18 +283,56 @@ font-family: georgia;
 #filterbuttons {
 text-align: center;}
 
+
+
+
+/* archive image styling */
 #archiveleft {
-   position: absolute;
+   position: fixed;
    left: 20;
    z-index: -1;
    width: 25%;
    weight: 25%;
    margin-top: 150;
    border-radius: 30px;
-
-
 }
 
+
+
+#archiveleftdown {
+   position: absolute;
+   left: 20;
+   z-index: -1;
+   width: 25%;
+   weight: 25%;
+   margin-top: 500;
+   border-radius: 30px;
+}
+
+#archiveright {
+   position: absolute;
+   left: 1200;
+   z-index: -1;
+   width: 25%;
+   weight: 25%;
+   margin-top: 150;
+   border-radius: 30px;
+}
+
+#archivemiddle {
+   position: absolute;
+   z-index: -1;
+   width: 30%;
+   weight: 30%;
+   margin-top: 450;
+   left: 600;
+   border-radius: 30px;
+}
+
+#backtotop {
+position: fixed;
+bottom: 64px;
+right: 128px;
 }
 
 `;
@@ -328,13 +381,3 @@ function w3RemoveClass(element, name) {
   element.className = arr1.join(" ");
 }
 
-// Add active class to the current control button (highlight it)
-var btnContainer = document.getElementById("filterbuttons");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
