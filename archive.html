@@ -1,7 +1,8 @@
 <meta charset="utf-8"><script src="harpy-style.js"></script>
 
 
-
+<br>
+<br>
 <script>
   const all = {
     2024: [
@@ -23,8 +24,8 @@
 
     2026: [
       {src:"perezcenterforthearts", title:"Perez Center", href:"perezcenterforthearts"},
-      {src:"driftwood", title:"Driftwood", href:"driftwood"},
-      {src:"untitled", title:"Seashell", href:"untitled"},
+      {src:"driftwood", title:"Driftwood"},
+      {src:"untitled", title:"Seashell"},
 
     ]
   };
@@ -34,8 +35,11 @@
   for (const year in all) {
     button_list += `<button class="btn" onclick="filterSelection('${year}')"> ${year}</button>`;
     for (const image of all[year]) {
-      const link = image.href ? `archivetext/${image.href}.html` : `art/${image.src}.png`;
-      image_list += `<div class="filterDiv ${year}">[<img src="art/${image.src}tn.png">](${link})_${image.title}_</div>`;
+      if (image.href) {
+        image_list += `<div class="filterDiv ${year}">[<img src="art/${image.src}tn.png">](archivetext/${image.href}.html)_${image.title}_</div>`;
+      } else {
+        image_list += `<div class="filterDiv ${year}">[<img src="art/${image.src}tn.png">](art/${image.src}.jpg target="_blank")_${image.title}_</div>`;
+      }
     }
   }
 
@@ -61,3 +65,7 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 </script>
+
+
+<aside>
+  <a href="archivetext/figuredrawing.html"><img  id="figuredrawing" src="art/figuredrawingtn.png"></a></aside>

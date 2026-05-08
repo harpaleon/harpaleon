@@ -215,16 +215,29 @@ z-index: -1;
 }
 
 #mailbox {
-bottom: 128px;
-right: 128px;
+top: 150px;
+left: 650px;
 position: fixed;
 }
 
 #mailbox:hover {
-transform: scale(2,2);
+transform: scale(1.2,1.2);
 transform-origin: center;
 }
 
+
+#figuredrawing {
+bottom: 128px;
+right: 128px;
+position: fixed;
+width: 100px;
+}
+
+#figuredrawing:hover {
+transform: scale(1.2,1.2);
+transform-origin: center;
+width: 100px;
+}
 
 #navigation {
     color: rgb(102, 56, 0);
