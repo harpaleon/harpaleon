@@ -3,23 +3,28 @@
 
 <br>
 <br>
+
 <script>
   const all = {
     2024: [
       {src:"piranha",     title:"Fish Series",    href:"pastelfish"},
       {src:"seacollage",  title:"Rockweed One"},
-      {src:"nurseshark",  title:"Nurse Shark"},
       {src:"thelightinthemirror", title:"The Light in the Mirror"},
       {src:"sendsusanourlove", title:"Send Susan Our Love"},
       {src:"tvstudy", title:"Will Graham"},
       {src:"gull", title:"Gull"},
       {src:"dermotographicalnightmare", title:"Derm. Nightmare"},
       {src:"walkingonthelake", title:"Walking on the Lake"},
-      {src:"totallytruthful", title:"Totally Truthful", href:"totallytruthful"},
+      {src:"totallytruthful", title:"Totally Truthful"},
+      {src:"tiger", title:"Tiger"},
     ],
 
     2025: [
       {src:"williamstown", title:"Williamstown"},
+      {src:"apple", title:"Apple"},
+      {src:"fairies", title:"Fairies", href: "fairies"},
+
+
     ],
 
     2026: [
@@ -45,14 +50,11 @@
 
   document.write(`
 <div id="filterbuttons">
-  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn active" onclick="filterSelection('all')">All</button>
   ${button_list}
 </div>`);
 
   document.write(`<div class="archivefiltercontainers">${image_list}</div>`);
-</script>
-
-<script>
 
 var btnContainer = document.getElementById("filterbuttons");
 var btns = btnContainer.getElementsByClassName("btn");
@@ -64,6 +66,7 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 
+filterSelection('all')
 </script>
 
 
