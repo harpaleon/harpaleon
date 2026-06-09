@@ -87,6 +87,22 @@ em.asterisk {
     font-size: 50px;
 }
 
+
+.md h1 {
+    display: none;
+}
+
+title {
+    display: block;
+    position: static;
+    color: rgb(164, 205, 0);
+    text-transform: lowercase;
+    font-family: "Micro 5";
+    font-size: 50px;
+    text-align: center;
+    margin-top: 34px;
+}
+
 .md a:visited {
     color:rgb(164, 205, 0);
 }
@@ -210,8 +226,8 @@ nav.footer a:hover {
 }
 
 #placeholderimage {
-margin-top: -250;
-left: -350;
+margin-top: -400;
+left: -330;
 position: relative;
 z-index: -1;
 }
