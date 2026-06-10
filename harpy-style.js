@@ -314,52 +314,6 @@ font-family: georgia;
 #filterbuttons {
 text-align: center;}
 
-
-
-
-/* archive image styling */
-#archiveleft {
-   position: absolute;
-   left: 20;
-   z-index: -1;
-   width: 25%;
-   weight: 25%;
-   margin-top: 150;
-   border-radius: 30px;
-}
-
-
-
-#archiveleftdown {
-   position: absolute;
-   left: 20;
-   z-index: -1;
-   width: 25%;
-   weight: 25%;
-   margin-top: 500;
-   border-radius: 30px;
-}
-
-#archiveright {
-   position: absolute;
-   left: 1200;
-   z-index: -1;
-   width: 25%;
-   weight: 25%;
-   margin-top: 150;
-   border-radius: 30px;
-}
-
-#archivemiddle {
-   position: absolute;
-   z-index: -1;
-   width: 30%;
-   weight: 30%;
-   margin-top: 450;
-   left: 600;
-   border-radius: 30px;
-}
-
 #backtotop {
 position: fixed;
 bottom: 64px;
