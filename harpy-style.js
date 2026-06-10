@@ -30,7 +30,6 @@ document.write(`
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
-<title>Harpaleon</title>
 <nav class="header"><div class="nav-content"><div class="xtitle"><a href="${root}index.html">harpy</a></div>   <a href="${root}art.html">ART</a>   <a href="${root}stories.html">STORIES</a>   <a href="${root}archive.html">ARCHIVE</a></div></nav>
 `);
 
