@@ -319,7 +319,7 @@ text-align: center;}
 
 /* archive image styling */
 #archiveleft {
-   position: fixed;
+   position: absolute;
    left: 20;
    z-index: -1;
    width: 25%;
