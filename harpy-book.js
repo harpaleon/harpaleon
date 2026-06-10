@@ -28,6 +28,7 @@ title {
     top: 88px;
     left: 0;
     box-sizing: border-box;
+    line-height: 100%;
 }
 
 #book-nav {
@@ -71,8 +72,9 @@ title {
 .md h2 {
     font-family: "georgia", serif;
     text-transform: uppercase;
-    color: black;
     font-size: 20px;
+    color: rgb(85, 47, 1);
+
 }
 
 .md section.h2-section {
