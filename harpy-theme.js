@@ -62,7 +62,8 @@ window.markdeepOptions = Object.assign({
             textShadow: '0px 1px 3px rgb(0, 0, 0, 0.3)'
         },
 
-        a: {color: '#38a'},
+        a:         {color: '#38a'},
+        a_visited: {color: 'rgb(164, 205, 0)'},
 
         p: {textIndent: '2em'},
 
