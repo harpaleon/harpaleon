@@ -1,0 +1,94 @@
+.md h2::before, .md h3::before { display: none; }
+
+.md a:visited { color: rgb(164, 205, 0); }
+
+#site_header a:hover { opacity: 0.8; }
+
+#site_header ul:first-child > li {
+    padding-right: 16px;
+    vertical-align: baseline;
+}
+
+.xtitle {
+    user-select: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 3px;
+    padding-right: 8px;
+    display: inline-block;
+}
+
+.md .xtitle a:link, .md .xtitle a:visited { color: rgb(245, 134, 0); }
+
+.md .xtitle:hover { opacity: 0.8; }
+
+/* Titles of works, on the art and stories pages. */
+.md .worktitles {
+    color: rgb(102, 56, 0);
+    text-align: center;
+    font-family: "Micro 5", sans-serif;
+    font-size: 50px;
+    line-height: 120%;
+}
+
+.md .worktitles a:link, .md .worktitles a:visited { color: inherit; }
+
+.md .worktitles a:hover { opacity: 0.8; }
+
+.md em.asterisk {
+    font-style: normal;
+    font-weight: bold;
+}
+
+/* The archive's year filter and its grid of jars. */
+#filterbuttons { text-align: center; }
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background: rgba(194, 212, 255, 0.61);
+    cursor: pointer;
+    font-family: "Micro 5", sans-serif;
+    font-size: 20px;
+}
+
+.btn:hover { background: rgba(218, 229, 255, 0.61); }
+
+.btn.active {
+    background: rgb(245, 134, 0);
+    color: white;
+    font-family: georgia;
+}
+
+.archivefiltercontainers {
+    margin-top: 32px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.filterDiv {
+    float: left;
+    width: 150px;
+    text-align: center;
+    font-size: 11px;
+    margin: 6px;
+    display: none;
+}
+
+.filterDiv.show { display: block; }
+
+
+#figuredrawing {
+    bottom: 128px;
+    right: 128px;
+    position: fixed;
+    width: 100px;
+}
+
+#figuredrawing:hover {
+    transform: scale(1.2, 1.2);
+    transform-origin: center;
+}
+
+.md .markdeepFooter { display: none }

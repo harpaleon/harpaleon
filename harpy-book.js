@@ -1,136 +1,103 @@
-document.write(`<script src="harpy-style.js"><\/script><script>
-(function() {
-    var base = markdeepOptions.onLoad || null;
-    markdeepOptions.onLoad = function() { if (base) base(); bookInit(); };
-})();
-<\/script>`);
+// Harpy's book theme: the stories, set as two columns of a page the reader
+// turns. Sets what differs from harpy-theme.js and then loads it.
+//
+// The page is the article itself, so a story is plain markdown with no markup
+// of its own; harpy-book.css gives #article the column box and this file scales
+// it to the window and turns it.
 
-document.write(`<style>
-body {
-    max-width: 2048px;
-    padding: 0;
-    overflow-x: hidden;
+const BOOK_PAGE_WIDTH  = 800;
+const BOOK_PAGE_HEIGHT = 600;
+const BOOK_CHROME_HEIGHT = 158;
+
+let bookPageIndex = 0;
+let bookTurnWidth = BOOK_PAGE_WIDTH;
+
+
+function bookPage() {
+    return document.getElementById('article');
 }
 
-title {
-    font-size: 32px;
+
+function bookLastPageIndex() {
+    return Math.floor(bookPage().scrollWidth / bookTurnWidth) - 1;
 }
 
-#book-wrapper {
-    column-count: 2;
-    column-gap: 40px;
-    height: 600px;
-    width: 800px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    transform-origin: top left;
-    position: fixed;
-    top: 88px;
-    left: 0;
-    box-sizing: border-box;
-    line-height: 100%;
+
+function bookShowPageNumber() {
+    document.getElementById('book-page-number').textContent =
+        (bookPageIndex + 1) + ' / ' + (bookLastPageIndex() + 1);
 }
 
-#book-nav {
-    position: fixed;
-    bottom: 22px;
-    left: 0;
-    right: 0;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    pointer-events: none;
-    z-index: 10;
-}
-
-#book-nav button {
-    font-family: "Micro 5", sans-serif;
-    font-size: 42px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0 8px;
-    color: rgb(102, 56, 0);
-    user-select: none;
-    pointer-events: all;
-    position: absolute;
-}
-
-#book-page-num {
-    font-family: "Micro 5", sans-serif;
-    font-size: 20px;
-    color: rgb(102, 56, 0);
-    width: 100%;
-    text-align: center;
-}
-
-.md h1 {
-    display: none;
-}
-
-.md h2 {
-    font-family: "georgia", serif;
-    text-transform: uppercase;
-    font-size: 20px;
-    color: rgb(85, 47, 1);
-
-}
-
-.md section.h2-section {
-    margin-top: -32px;
-}
-
-span.md {
-    display: block;
-}
-</style>`);
-
-document.write(`<div id="book-nav">
-  <button id="book-prev" onclick="bookTurn(-1)">&lt;</button>
-  <span id="book-page-num"></span>
-  <button id="book-next" onclick="bookTurn(1)">&gt;</button>
-</div>`);
-
-var BOOK_LOGICAL_W = 800;
-var BOOK_LOGICAL_H = 600;
-var bookPage = 0;
-var BOOK_W = 680;
-var bookS = 1;
-
-function bookUpdateNav() {
-    var w = document.getElementById('book-wrapper');
-    var maxPage = Math.floor(w.scrollWidth / BOOK_W) - 1;
-    document.getElementById('book-page-num').textContent = (bookPage + 1) + ' / ' + (maxPage + 1);
-}
-
-function bookInit() {
-    var w = document.getElementById('book-wrapper');
-    var cs = getComputedStyle(w);
-    var colGap = parseFloat(cs.columnGap) || 40;
-    var colCount = parseInt(cs.columnCount) || 2;
-    var colWidth = (w.offsetWidth - (colCount - 1) * colGap) / colCount;
-    BOOK_W = Math.round((colWidth + colGap) * colCount);
-    bookScale();
-    bookUpdateNav();
-}
 
 function bookScale() {
-    var w = document.getElementById('book-wrapper');
-    bookS = Math.min(window.innerWidth / BOOK_LOGICAL_W, (window.innerHeight - 158) / BOOK_LOGICAL_H);
-    w.style.transform = 'scale(' + bookS + ')';
-    var scaledLeft = (window.innerWidth - BOOK_LOGICAL_W * bookS) / 2;
-    w.style.left = scaledLeft + 'px';
-    document.getElementById('book-prev').style.left = scaledLeft + 'px';
-    document.getElementById('book-next').style.left = (scaledLeft + BOOK_LOGICAL_W * bookS) + 'px';
+    const scale = Math.min(window.innerWidth / BOOK_PAGE_WIDTH,
+                           (window.innerHeight - BOOK_CHROME_HEIGHT) / BOOK_PAGE_HEIGHT);
+    const left = (window.innerWidth - BOOK_PAGE_WIDTH * scale) / 2;
+
+    bookPage().style.transform = 'scale(' + scale + ')';
+    bookPage().style.left = left + 'px';
+    document.getElementById('book-previous').style.left = left + 'px';
+    document.getElementById('book-next').style.left = (left + BOOK_PAGE_WIDTH * scale) + 'px';
 }
 
-function bookTurn(dir) {
-    var w = document.getElementById('book-wrapper');
-    var maxPage = Math.floor(w.scrollWidth / BOOK_W) - 1;
-    bookPage = Math.max(0, Math.min(bookPage + dir, maxPage));
-    w.scrollLeft = bookPage * BOOK_W;
-    bookUpdateNav();
+
+function bookTurn(direction) {
+    bookPageIndex = Math.max(0, Math.min(bookPageIndex + direction, bookLastPageIndex()));
+    bookPage().scrollLeft = bookPageIndex * bookTurnWidth;
+    bookShowPageNumber();
 }
 
-window.addEventListener('resize', bookScale);
+
+function bookTurningControls() {
+    const nav = document.createElement('div');
+    nav.id = 'book-nav';
+
+    const previous = document.createElement('button');
+    previous.id = 'book-previous';
+    previous.textContent = '<';
+    previous.addEventListener('click', function () { bookTurn(-1); });
+
+    const number = document.createElement('span');
+    number.id = 'book-page-number';
+
+    const next = document.createElement('button');
+    next.id = 'book-next';
+    next.textContent = '>';
+    next.addEventListener('click', function () { bookTurn(1); });
+
+    nav.appendChild(previous);
+    nav.appendChild(number);
+    nav.appendChild(next);
+    return nav;
+}
+
+
+function bookInitialize() {
+    // The story's name belongs over the page rather than down its first column,
+    // and #main_header is the box above the article that markdeep already emits.
+    const title = bookPage().querySelector('h1');
+    if (title) { document.getElementById('main_header').appendChild(title); }
+
+    document.body.appendChild(bookTurningControls());
+
+    const style = getComputedStyle(bookPage());
+    const columnGap = parseFloat(style.columnGap);
+    const columnCount = parseInt(style.columnCount);
+    const columnWidth = (bookPage().offsetWidth - (columnCount - 1) * columnGap) / columnCount;
+
+    bookTurnWidth = Math.round((columnWidth + columnGap) * columnCount);
+
+    bookScale();
+    bookShowPageNumber();
+    window.addEventListener('resize', bookScale);
+}
+
+
+// harpy-theme.js merges its own values under these, so they win.
+window.markdeepOptions = {
+    stylesheet: 'harpy-book.css',
+    postRenderCallback: bookInitialize
+};
+
+document.head.appendChild(Object.assign(document.createElement('script'),
+    {src: document.currentScript.src.replace(/[^/]*$/, 'harpy-theme.js')}));

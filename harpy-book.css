@@ -1,0 +1,85 @@
+@import url("harpy-theme.css");
+
+/* The story sits on a fixed 800x600 page of two columns that the reader turns,
+   scaled to whatever window it is read in. The page is the article itself, so a
+   story is plain markdown with no markup of its own. */
+
+body { overflow-x: hidden; }
+
+#article {
+    column-count: 2;
+    column-gap: 40px;
+    width: 800px;
+    height: 600px;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 88px;
+    left: 0;
+    transform-origin: top left;
+    box-sizing: border-box;
+}
+
+/* The story's name, which harpy-book.js lifts out of the page. Held in the
+   strip above it rather than left in flow, so it does not move with the bar. */
+#main_header {
+    position: fixed;
+    top: 44px;
+    left: 0;
+    right: 0;
+    padding: 0;
+}
+
+.md .afterTitles { display: none; }
+
+.md h1 {
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+/* A day is a heading within the story, so it is set in the reading face. */
+.md h2 {
+    font-family: georgia, serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: rgb(85, 47, 1);
+}
+
+.md section.h2-section { margin-top: -32px; }
+
+#book-nav {
+    position: fixed;
+    bottom: 22px;
+    left: 0;
+    right: 0;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#book-nav button {
+    font-family: "Micro 5", sans-serif;
+    font-size: 42px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 8px;
+    color: rgb(102, 56, 0);
+    user-select: none;
+    pointer-events: all;
+    position: absolute;
+}
+
+#book-page-number {
+    font-family: "Micro 5", sans-serif;
+    font-size: 20px;
+    color: rgb(102, 56, 0);
+    width: 100%;
+    text-align: center;
+}

@@ -1,78 +1,99 @@
-<meta charset="utf-8"><script src="harpy-style.js"></script>
+<meta charset="utf-8"><script src="https://morgan3d.github.io/markdeep/2/launch.js?file=harpy-theme.js" markdeep="2"></script>
 <style>
-  body {
-  max-width: 80%;
-  }
-  </style>
+:root { --content-max-width: 80%; }
+</style><plaintext>
 
 <br>
 <br>
+
+<div id="filterbuttons"></div>
+<div class="archivefiltercontainers"></div>
+
+<aside>
+  <a href="archivetext/figuredrawing.html"><img id="figuredrawing" src="art/figuredrawingtn.png"></a>
+</aside>
 
 <script>
-  const all = {
+// href names a page under archivetext/; without one the jar opens the image.
+const workTable = {
     2024: [
-      {src:"piranha",     title:"Fish Series",    href:"pastelfish"},
-      {src:"seacollage",  title:"Rockweed One"},
-      {src:"thelightinthemirror", title:"The Light in the Mirror"},
-      {src:"sendsusanourlove", title:"Send Susan Our Love"},
-      {src:"tvstudy", title:"Will Graham"},
-      {src:"gull", title:"Gull"},
-      {src:"dermotographicalnightmare", title:"Derm. Nightmare"},
-      {src:"walkingonthelake", title:"Walking on the Lake"},
-      {src:"totallytruthful", title:"Totally Truthful"},
-      {src:"tiger", title:"Tiger"},
+        {source: 'piranha',                 title: 'Fish Series', href: 'pastelfish'},
+        {source: 'seacollage',              title: 'Rockweed One'},
+        {source: 'thelightinthemirror',     title: 'The Light in the Mirror'},
+        {source: 'sendsusanourlove',        title: 'Send Susan Our Love'},
+        {source: 'tvstudy',                 title: 'Will Graham'},
+        {source: 'gull',                    title: 'Gull'},
+        {source: 'dermotographicalnightmare', title: 'Derm. Nightmare'},
+        {source: 'walkingonthelake',        title: 'Walking on the Lake'},
+        {source: 'totallytruthful',         title: 'Totally Truthful'},
+        {source: 'tiger',                   title: 'Tiger'}
     ],
 
     2025: [
-      {src:"williamstown", title:"Williamstown"},
-      {src:"apple", title:"Apple"},
-      {src:"fairies", title:"Fairies", href: "fairies"},
-
-
+        {source: 'williamstown',            title: 'Williamstown'},
+        {source: 'apple',                   title: 'Apple'},
+        {source: 'fairies',                 title: 'Fairies', href: 'fairies'}
     ],
 
     2026: [
-      {src:"perezcenterforthearts", title:"Perez Center", href:"perezcenterforthearts"},
-      {src:"driftwood", title:"Driftwood"},
-      {src:"untitled", title:"Seashell"},
-
+        {source: 'perezcenterforthearts',   title: 'Perez Center', href: 'perezcenterforthearts'},
+        {source: 'driftwood',               title: 'Driftwood'},
+        {source: 'untitled',                title: 'Seashell'}
     ]
-  };
+};
 
-  let button_list = "";
-  let image_list = "";
-  for (const year in all) {
-    button_list += `<button class="btn" onclick="filterSelection('${year}')"> ${year}</button>`;
-    for (const image of all[year]) {
-      if (image.href) {
-        image_list += `<div class="filterDiv ${year}">[<img src="art/${image.src}tn.png">](archivetext/${image.href}.html)_${image.title}_</div>`;
-      } else {
-        image_list += `<div class="filterDiv ${year}">[<img src="art/${image.src}tn.png">](art/${image.src}.jpg target="_blank")_${image.title}_</div>`;
-      }
+const buttonContainer = document.getElementById('filterbuttons');
+const jarContainer = document.querySelector('.archivefiltercontainers');
+
+function showYear(year) {
+    for (const jar of jarContainer.children) {
+        jar.classList.toggle('show', (year === 'all') || jar.classList.contains(year));
     }
-  }
-
-  document.write(`
-<div id="filterbuttons">
-  <button class="btn active" onclick="filterSelection('all')">All</button>
-  ${button_list}
-</div>`);
-
-  document.write(`<div class="archivefiltercontainers">${image_list}</div>`);
-
-var btnContainer = document.getElementById("filterbuttons");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
 }
 
-filterSelection('all')
+function addButton(year, label) {
+    const button = document.createElement('button');
+    button.className = 'btn';
+    button.textContent = label;
+    button.addEventListener('click', function () {
+        const active = buttonContainer.querySelector('.active');
+        if (active) { active.classList.remove('active'); }
+        button.classList.add('active');
+        showYear(year);
+    });
+    buttonContainer.appendChild(button);
+    return button;
+}
+
+addButton('all', 'All').classList.add('active');
+
+for (const year in workTable) {
+    addButton(year, ' ' + year);
+
+    for (const work of workTable[year]) {
+        const jar = document.createElement('div');
+        jar.className = 'filterDiv ' + year;
+
+        const link = document.createElement('a');
+        if (work.href) {
+            link.href = 'archivetext/' + work.href + '.html';
+        } else {
+            link.href = 'art/' + work.source + '.jpg';
+            link.target = '_blank';
+        }
+
+        const thumbnail = document.createElement('img');
+        thumbnail.src = 'art/' + work.source + 'tn.png';
+        link.appendChild(thumbnail);
+
+        const caption = document.createElement('em');
+        caption.textContent = work.title;
+
+        jar.appendChild(link);
+        jar.appendChild(caption);
+        jarContainer.appendChild(jar);
+    }
+}
+
+showYear('all');
 </script>
-
-
-<aside>
-  <a href="archivetext/figuredrawing.html"><img  id="figuredrawing" src="art/figuredrawingtn.png"></a></aside>
