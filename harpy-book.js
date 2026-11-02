@@ -93,9 +93,10 @@ function bookInitialize() {
 }
 
 
-// harpy-theme.js pushes its layer after this one, so these win.
+// harpy-theme.js pushes its layer after this one, so these win, and
+// harpy-book.css loads after harpy-theme.css.
 ( window.markdeepOptions ||=[] ).push({
-    stylesheet: 'harpy-book.css',
+    stylesheets: {'harpy-book': 'harpy-book.css'},
     postRenderCallback: bookInitialize
 });
 

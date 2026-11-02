@@ -1,5 +1,3 @@
-@import url("harpy-theme.css");
-
 /* The story sits on a fixed 800x600 page of two columns that the reader turns,
    scaled to whatever window it is read in. The page is the article itself, so a
    story is plain markdown with no markup of its own. */

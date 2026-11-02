@@ -5,7 +5,7 @@ const harpySiteRoot = document.currentScript.src.replace(/[^/]*$/, '');
 ( window.markdeepOptions ||=[] ).push({
     markdeepPath: 'https://morgan3d.github.io/markdeep/2/latest/markdeep2.min.js',
 
-    stylesheet: 'harpy-theme.css',
+    stylesheets: {'harpy-theme': 'harpy-theme.css'},
     favicon:    'icon.png',
 
     fontStylesheets: ['https://fonts.googleapis.com/css2?family=Micro+5&display=swap'],
