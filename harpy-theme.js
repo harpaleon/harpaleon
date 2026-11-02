@@ -2,7 +2,7 @@
 
 const harpySiteRoot = document.currentScript.src.replace(/[^/]*$/, '');
 
-window.markdeepOptions = Object.assign({
+( window.markdeepOptions ||=[] ).push({
     markdeepPath: 'https://morgan3d.github.io/markdeep/2/latest/markdeep2.min.js',
 
     stylesheet: 'harpy-theme.css',
@@ -83,7 +83,7 @@ window.markdeepOptions = Object.assign({
         h2: {fontSize: '50px', borderBottomStyle: 'none', paddingBottom: '3px'}
     }
 
-}, window.markdeepOptions || {});
+});
 
 // Mandatory activation line. DO NOT MODIFY OR RELOCATE
-((d)=>d.head.appendChild(((m)=>{m.dataset.theme=d.currentScript.src;return m;})(Object.assign(d.createElement('script'),{src:window.markdeepOptions.markdeepPath}))))(document);
+((d,o)=>d.head.appendChild(((m)=>{m.dataset.theme=d.currentScript.src;return m;})(Object.assign(d.createElement('script'),{src:o.find((e)=>e.markdeepPath)?.markdeepPath??d.currentScript.src.replace(/[^/]*$/,'markdeep2.min.js')}))))(document,window.markdeepOptions);

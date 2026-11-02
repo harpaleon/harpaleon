@@ -93,11 +93,11 @@ function bookInitialize() {
 }
 
 
-// harpy-theme.js merges its own values under these, so they win.
-window.markdeepOptions = {
+// harpy-theme.js pushes its layer after this one, so these win.
+( window.markdeepOptions ||=[] ).push({
     stylesheet: 'harpy-book.css',
     postRenderCallback: bookInitialize
-};
+});
 
 document.head.appendChild(Object.assign(document.createElement('script'),
     {src: document.currentScript.src.replace(/[^/]*$/, 'harpy-theme.js')}));
